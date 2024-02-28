@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // function isOdd()
+        function isOdd(number) {
+            return new Promise(function(resolve,reject){
+                if(number % 2 !== 0){
+                    console.log("Rejected Even", number);; 
+            } else {  
+                    console.log("Resolved Odd", number);
+            }
+            });     
+        }
+      
+        //array
+        const numbers = [1,2,3,4,5];
+
+
+        for (let i = 0; i < numbers.length; i++){
+            const num = numbers[i];
+
+            isOdd(number)
+                .then(x => {
+                    if(x){
+                        console.log(`${num} is odd. `);
+                    } else {
+                        console.log(`${num} is even. `);
+                    }
+                })
+                
+            .catch(error => {
+                console.log(error);
+            });
+        }
+
+
+        //asynchronous function - resolve
+        function getRandomCharacter() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const charac = 'abcdefghijklmnopqrstuvwxyz';
+                    const randomIndex = math.foor(math.random() * charac.length);
+                    const randomcharac = charac.charAt(randomIndex);
+                    resolve(randomcharac);
+                }, 500);
+            })
+        }
+
+        async function Charac() {
+            try {
+                const random = await getRandomCharacter();
+                console.log('', random)
+            } catch (error){
+                console.error('', error)
+            }
+        }
+
+
+        function getData() {
+        return new Promise((resolve, reject)=> {
+            setTimeout(()=> {
+                let random = Math.floor(Math.random() * 200);
+                reject(random);
+                }, 500);
+            });
+        }
+
+        getData()
+        .then(character => {
+            console.log("Resolved Value:", character);
+        }).catch(error => {
+            console.log("Rejected Value:", error);
+    });
+
+    function rejectResolve() {
+        return new Promise((reject, resolve)=> {
+            setTimeout(()=> {
+                for (let i = 0; i < 2; i++){
+                if (i === 1){
+                    console.log("Resolve Function");
+                } else {
+                    console.log("Reject Function");
+                }
+            }
+            }, 500);
+            
+        });
+    }
+
+    async function resolve() {
+            try {
+                const resolve = await rejectResolve();
+                console.log('', resolve)
+            } catch (reject){
+                console.error('', reject)
+            }
+        }
+
+
+    </script>
+</body>
+</html>
